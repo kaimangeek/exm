@@ -1,0 +1,5 @@
+#root {
+  text-align: center;
+  height: calc(100vh - 70px);
+  max-width: 100vw;
+}
