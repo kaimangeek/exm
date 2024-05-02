@@ -35,3 +35,18 @@
 //     }
 //   }
 // }
+
+Cypress.Commands.add('login', () => {
+    cy.request({
+        method: 'POST',
+        url: 'http://localhost:5000/api/user/login', // URL вашего API для логина
+        body: {
+            login: 'kaimangeek',
+            password: 'qwerty'
+        }
+    }).then((resp) => {
+        expect(resp.status).to.eq(200); // Убедитесь, что статус ответа 200
+        // Вы можете сохранить токен или другую информацию о сессии здесь, например:
+        window.localStorage.setItem('token', resp.body.token);
+    });
+});
